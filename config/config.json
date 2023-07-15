@@ -21,7 +21,48 @@
             "target": "m32c",
             "mappings": [
                 {
-                    
+                    "from": {
+                        "type": "rtp",
+                        "cc": 11,
+                        "channel": 11
+                    },
+                    "to": {
+                        "type": "osc",
+                        "address": "/bus/01/mix/fader"
+                    }
+                },
+                {
+                    "from": {
+                        "type": "rtp",
+                        "cc": 12,
+                        "channel": 11
+                    },
+                    "to": {
+                        "type": "osc",
+                        "address": "/bus/02/mix/fader"
+                    }
+                },
+                {
+                    "from": {
+                        "type": "rtp",
+                        "cc": 13,
+                        "channel": 11
+                    },
+                    "to": {
+                        "type": "osc",
+                        "address": "/bus/03/mix/fader"
+                    }
+                },
+                {
+                    "from": {
+                        "type": "rtp",
+                        "cc": 14,
+                        "channel": 11
+                    },
+                    "to": {
+                        "type": "osc",
+                        "address": "/bus/04/mix/fader"
+                    }
                 }
             ]
         }
