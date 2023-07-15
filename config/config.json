@@ -1,0 +1,29 @@
+{
+    "sources": [
+        {
+            "type": "rtp",
+            "name": "My lovely session",
+            "bonjour": "MY_SESSION",
+            "port": 5006
+        }
+    ],
+    "targets": [
+        {
+            "type": "osc",
+            "name": "m32c",
+            "host": "192.168.0.32",
+            "port": "10023"
+        }
+    ],
+    "mappingSets": [
+        {
+            "source": "My lovely session",
+            "target": "m32c",
+            "mappings": [
+                {
+                    
+                }
+            ]
+        }
+    ]
+}
