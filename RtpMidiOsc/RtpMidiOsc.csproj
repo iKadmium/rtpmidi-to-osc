@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Kadmium-Osc" Version="0.1.3" />
     <PackageReference Include="KadmiumRtpMidi" Version="0.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
   </ItemGroup>

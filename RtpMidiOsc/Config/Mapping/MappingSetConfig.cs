@@ -9,5 +9,6 @@ namespace RtpMidiOsc.Config.Mapping
     {
         public required string Source { get; set; }
         public required string Target { get; set; }
+        public required IList<MappingConfig> Map { get; set; }
     }
 }

@@ -9,7 +9,7 @@ using RtpMidiOsc.Config.Source;
 
 namespace RtpMidiOsc.Source
 {
-    public class RtpSource : MidiSource
+    public class RtpSource : IMidiSource
     {
         private Session Session { get; }
         public event EventHandler<PacketReceivedEventArgs>? OnPacketReceived;

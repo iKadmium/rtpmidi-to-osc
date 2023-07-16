@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RtpMidiOsc.Source
 {
-    public abstract class MidiSource
+    public interface IMidiSource
     {
 
     }

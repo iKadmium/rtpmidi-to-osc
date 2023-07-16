@@ -14,5 +14,6 @@ builder.Services.AddSingleton<IMappingManager, MappingManager>();
 
 using IHost host = builder.Build();
 var mappingManager = host.Services.GetRequiredService<IMappingManager>();
+await mappingManager.Setup();
 
 await host.RunAsync();

@@ -19,12 +19,12 @@
         {
             "source": "My lovely session",
             "target": "m32c",
-            "mappings": [
+            "map": [
                 {
                     "from": {
                         "type": "rtp",
                         "cc": 11,
-                        "channel": 11
+                        "channel": 10
                     },
                     "to": {
                         "type": "osc",
@@ -35,7 +35,7 @@
                     "from": {
                         "type": "rtp",
                         "cc": 12,
-                        "channel": 11
+                        "channel": 10
                     },
                     "to": {
                         "type": "osc",
@@ -46,7 +46,7 @@
                     "from": {
                         "type": "rtp",
                         "cc": 13,
-                        "channel": 11
+                        "channel": 10
                     },
                     "to": {
                         "type": "osc",
@@ -57,7 +57,7 @@
                     "from": {
                         "type": "rtp",
                         "cc": 14,
-                        "channel": 11
+                        "channel": 10
                     },
                     "to": {
                         "type": "osc",
