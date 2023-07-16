@@ -48,40 +48,12 @@ namespace RtpMidiOsc.Mapping
             }
             foreach (var mappingSet in config.MappingSets)
             {
-                var source = Sources[mappingSet.Source];
-                var target = Targets[mappingSet.Target];
+                var source = Sources[mappingSet.Source] ?? throw new InvalidDataException($"Could not find source {mappingSet.Source}");
+                var target = Targets[mappingSet.Target] ?? throw new InvalidDataException($"Could not find target {mappingSet.Target}");
+
                 foreach (var map in mappingSet.Map)
                 {
-                    Func<byte, Task>? sendFunc = null;
-                    if (map.To is OscMappingItemConfig oscMappingItemConfig && target is OscTarget oscTarget)
-                    {
-                        sendFunc = (value) => oscTarget.Send(oscMappingItemConfig.Address, value);
-                    }
-                    if (sendFunc != null)
-                    {
-                        switch (source)
-                        {
-                            case RtpSource rtpSource:
-                                if (map.From is RtpMappingItemConfig rtpMappingItemConfig)
-                                {
-                                    rtpSource.OnPacketReceived += async (sender, packet) =>
-                                    {
-                                        var matches = packet.Packet.Commands.Where(x => x is ControlChange cc
-                                            && cc.CcNumber == rtpMappingItemConfig.Cc
-                                            && cc.Channel == rtpMappingItemConfig.Channel
-                                        ).Select(x => x as ControlChange);
-                                        foreach (var match in matches)
-                                        {
-                                            if (match != null)
-                                            {
-                                                await sendFunc(match.Value);
-                                            }
-                                        }
-                                    };
-                                }
-                                break;
-                        }
-                    }
+                    source.AddListener(map.From, target.GetSendFunc(map.To));
                 }
             }
         }

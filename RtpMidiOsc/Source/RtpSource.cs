@@ -5,6 +5,8 @@ using System.Net;
 using System.Threading.Tasks;
 using KadmiumRtpMidi;
 using KadmiumRtpMidi.Packets;
+using KadmiumRtpMidi.Packets.MidiCommands;
+using RtpMidiOsc.Config.Mapping;
 using RtpMidiOsc.Config.Source;
 
 namespace RtpMidiOsc.Source
@@ -21,6 +23,31 @@ namespace RtpMidiOsc.Source
             {
                 OnPacketReceived?.Invoke(this, args);
             };
+        }
+
+        public void AddListener(MappingItemConfig config, Func<byte, Task> sendFunc)
+        {
+            if (config is RtpMappingItemConfig rtpMappingItemConfig)
+            {
+                Session.OnPacketReceived += async (sender, packet) =>
+                {
+                    var matches = packet.Packet.Commands.Where(x => x is ControlChange cc
+                        && cc.CcNumber == rtpMappingItemConfig.Cc
+                        && cc.Channel == rtpMappingItemConfig.Channel
+                    ).Select(x => x as ControlChange);
+                    foreach (var match in matches)
+                    {
+                        if (match != null)
+                        {
+                            await sendFunc(match.Value);
+                        }
+                    }
+                };
+            }
+            else
+            {
+                throw new InvalidDataException($"Tried to map {config.Type} data from an RTP Source");
+            }
         }
     }
 }
