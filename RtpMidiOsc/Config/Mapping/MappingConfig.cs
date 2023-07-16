@@ -7,7 +7,7 @@ namespace RtpMidiOsc.Config.Mapping
 {
     public record MappingConfig
     {
-        public required string From { get; set; }
-        public required string To { get; set; }
+        public required MappingItemConfig From { get; set; }
+        public required MappingItemConfig To { get; set; }
     }
 }

@@ -8,5 +8,7 @@ namespace RtpMidiOsc.Config.Source
     public record RtpSourceConfig : SourceConfig
     {
         public required string BonjourName { get; set; }
+
+        public override SourceType Type { get { return SourceType.RTP; } }
     }
 }

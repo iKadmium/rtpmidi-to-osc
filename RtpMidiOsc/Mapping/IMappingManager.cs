@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RtpMidiOsc.Config
+namespace RtpMidiOsc.Mapping
 {
-    public interface IConfigProvider
+    public interface IMappingManager
     {
-        public Task<Config> GetConfigAsync();
+        Task Setup();
     }
 }

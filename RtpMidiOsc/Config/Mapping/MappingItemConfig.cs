@@ -1,13 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using RtpMidiOsc.Config.Source;
 
 namespace RtpMidiOsc.Config.Mapping
 {
-    public record MappingItemConfig
+    [JsonPolymorphic(TypeDiscriminatorPropertyName = "type")]
+    [JsonDerivedType(typeof(RtpMappingItemConfig), typeDiscriminator: "rtp")]
+    [JsonDerivedType(typeof(OscMappingItemConfig), typeDiscriminator: "osc")]
+    public abstract record MappingItemConfig
     {
-        public required SourceType Type { get; set; }
+        public abstract SourceType Type { get; }
     }
 }

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RtpMidiOsc.Config
+namespace RtpMidiOsc.Source
 {
-    public interface IConfigProvider
+    public abstract class MidiSource
     {
-        public Task<Config> GetConfigAsync();
+
     }
 }
