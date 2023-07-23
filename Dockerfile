@@ -1,5 +1,3 @@
-EXPOSE 5353
-
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
 WORKDIR /App
 
@@ -12,6 +10,7 @@ RUN dotnet publish -c Release -o out
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
+EXPOSE 5353/udp
 WORKDIR /App
 COPY --from=build-env /App/out .
 ENTRYPOINT ["dotnet", "RtpMidiOsc.dll"]
