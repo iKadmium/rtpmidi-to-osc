@@ -28,7 +28,8 @@
                     },
                     "to": {
                         "type": "osc",
-                        "address": "/bus/01/mix/fader"
+                        "address": "/ch/01/mix/fader",
+                        "argType": "float"
                     }
                 },
                 {
@@ -39,7 +40,8 @@
                     },
                     "to": {
                         "type": "osc",
-                        "address": "/bus/02/mix/fader"
+                        "address": "/ch/03/mix/fader",
+                        "argType": "float"
                     }
                 },
                 {
@@ -50,18 +52,44 @@
                     },
                     "to": {
                         "type": "osc",
-                        "address": "/bus/03/mix/fader"
+                        "address": "/ch/05/mix/fader",
+                        "argType": "float"
                     }
                 },
                 {
                     "from": {
                         "type": "rtp",
-                        "cc": 14,
+                        "cc": 20,
                         "channel": 10
                     },
                     "to": {
                         "type": "osc",
-                        "address": "/bus/04/mix/fader"
+                        "address": "/ch/01/mix/on",
+                        "argType": "int"
+                    }
+                },
+                {
+                    "from": {
+                        "type": "rtp",
+                        "cc": 21,
+                        "channel": 10
+                    },
+                    "to": {
+                        "type": "osc",
+                        "address": "/ch/03/mix/on",
+                        "argType": "int"
+                    }
+                },
+                {
+                    "from": {
+                        "type": "rtp",
+                        "cc": 22,
+                        "channel": 10
+                    },
+                    "to": {
+                        "type": "osc",
+                        "address": "/ch/05/mix/on",
+                        "argType": "int"
                     }
                 }
             ]
